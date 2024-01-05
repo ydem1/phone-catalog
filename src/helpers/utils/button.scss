@@ -1,0 +1,48 @@
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border: 1px solid $icon;
+
+  @include hover(border-color, $primary);
+
+  &__primary {
+    color: $white;
+    background-color: $primary;
+
+    flex-grow: 1;
+
+    font-size: 14px;
+    font-family: $semi-bold-fonts;
+
+    line-height: 21px;
+
+    padding-block: 10px;
+
+    @include hover(box-shadow, 0 3px 13px 0 rgba(23, 32, 49, 0.26));
+    @include hover(border-color, none);
+
+    transition: all $animationDuration linear;
+
+    &--active {
+      color: $green;
+      background-color: $white;
+      border-color: $elements;
+    }
+  }
+
+  &--disable {
+    opacity: 0.5;
+    cursor: default;
+    @include hover(border-color, $icon);
+  }
+
+  &--onTable-turnOn {
+    display: none;
+
+    @include onTable {
+      display: flex;
+    }
+  }
+}

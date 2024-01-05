@@ -1,0 +1,5 @@
+@import "../../helpers/utils/utils";
+
+.tablets {
+  @include pageProducts();
+}

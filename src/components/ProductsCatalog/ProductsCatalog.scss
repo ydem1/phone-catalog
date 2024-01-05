@@ -1,0 +1,7 @@
+@import "../../helpers/utils/utils";
+
+.products-catalog {
+  &__content {
+    @include contentPaddingInline();
+  }
+}

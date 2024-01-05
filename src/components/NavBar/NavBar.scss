@@ -1,0 +1,35 @@
+@import "../../helpers/utils/utils";
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+
+  color: $nav-text-color;
+
+  @include onTable {
+    flex-direction: row;
+    gap: 40px;
+  }
+
+  &__link {
+    font-size: 12px;
+    font-family: $bold-fonts;
+    line-height: 11px;
+    letter-spacing: 0.48px;
+    text-transform: uppercase;
+
+    padding-block: 16px;
+
+    @include hover(color, $primary);
+
+    @include onTable {
+      padding-block: 27px;
+    }
+
+    &--is-active {
+      @include isLinkActive();
+    }
+  }
+}

@@ -1,0 +1,85 @@
+@import "../../helpers/utils/utils";
+
+.header {
+  background-color: $header-background-color;
+
+  box-shadow: 0 1px 0 0 $elements;
+
+  &__content {
+    @include contentPaddingInline();
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    @include onDesktop {
+      padding-inline: 0;
+    }
+  }
+
+  &__logo-nav-bar {
+    display: flex;
+    align-items: center;
+
+    gap: 64px;
+  }
+
+  &__logo {
+    padding-block: 20px;
+
+    @include onDesktop {
+      margin-left: 20px;
+    }
+  }
+
+  &__nav {
+    display: none;
+
+    @include onTable {
+      display: block;
+    }
+  }
+
+  &__rigth-part {
+    display: none;
+
+    @include onTable {
+      display: flex;
+    }
+  }
+
+  &__search-bar {
+    @include onDesktop {
+      width: 367px;
+    }
+  }
+
+  &__favorites-cart-wrapper {
+    display: flex;
+  }
+
+  &__link {
+    padding: 24px;
+    border: 1px solid $elements;
+
+    @include hover(border-color, $primary);
+
+    &--is-active {
+      @include isLinkActive();
+    }
+  }
+
+  &__onMobile {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+
+    @include onTable {
+      display: none;
+    }
+  }
+
+  &__menu {
+    @include hover(transform, scale(1.2));
+  }
+}

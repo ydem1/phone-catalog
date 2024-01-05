@@ -1,0 +1,9 @@
+@import "../../helpers/utils/utils";
+
+.product-details {
+  &__content {
+    @include contentPaddingInline();
+  }
+
+  @include pageProducts();
+}

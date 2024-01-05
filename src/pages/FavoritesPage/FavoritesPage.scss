@@ -1,0 +1,7 @@
+@import "../../helpers/utils/utils";
+
+.favorites {
+  &__content {
+    @include contentPaddingInline();
+  }
+}

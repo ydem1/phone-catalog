@@ -1,0 +1,115 @@
+@mixin hover($_property, $_toValue) {
+  transition: #{$_property} $animationDuration linear;
+
+  &:hover {
+    #{$_property}: $_toValue;
+  }
+}
+
+@mixin titleSection() {
+  color: $primary;
+
+  font-size: 32px;
+  font-family: $bold-fonts;
+  letter-spacing: -0.32px;
+}
+
+@mixin message() {
+  color: $secondary;
+  font-size: 22px;
+  padding: 24px;
+  background-color: $message-background;
+  border: 1px solid $primary;
+  border-radius: 15px;
+
+  text-align: center;
+}
+
+@mixin isLinkActive() {
+  position: relative;
+
+  color: $primary;
+
+  &::after {
+    position: absolute;
+    z-index: 1;
+    bottom: -1px;
+    left: 0;
+    right: 0;
+
+    content: "";
+
+    height: 3px;
+
+    background-color: $primary;
+  }
+}
+
+@mixin separator() {
+  width: 100%;
+  height: 1px;
+
+  background-color: $elements;
+}
+
+@mixin loadingContainer() {
+  height: 75vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin contentPaddingInline() {
+  padding-inline: 30px;
+
+  @include onTable {
+    padding-inline: 50px;
+  }
+
+  @include onDesktop {
+    padding-inline: 152px;
+  }
+}
+
+@mixin onTable() {
+  @media (min-width:$table-min-width) {
+    @content;
+  }
+}
+
+@mixin onDesktop() {
+  @media (min-width:$desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin pageGrid() {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 16px;
+
+  @include onTable() {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  @include onDesktop() {
+    grid-template-columns: repeat(24, 1fr);
+  }
+}
+
+@mixin pageProducts() {
+  &__loading {
+    @include loadingContainer();
+  }
+
+  &__error {
+    @include message();
+
+    color: $white;
+    background-color: $error-background;
+    border-color: $elements;
+    margin-top: 25vh;
+    width: 50%;
+    margin-inline: auto;
+  }
+}

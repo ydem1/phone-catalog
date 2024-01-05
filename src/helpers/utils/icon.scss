@@ -1,0 +1,108 @@
+@import "../../helpers/utils/_mixins.scss";
+
+.icon {
+  position: relative;
+
+  width: 16px;
+  height: 16px;
+
+  background-position: center;
+  background-repeat: no-repeat;
+
+  &__favorites {
+    background-image: url(../../icon/favorites.svg);
+
+    transition: all $animationDuration linear;
+
+    &--active {
+      background-image: url(../../icon/favorites-active.svg);
+    }
+  }
+
+  &__label-count {
+    position: absolute;
+    left: 50%;
+    bottom: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 14px;
+    height: 14px;
+
+    color: $white;
+    font-size: 9px;
+    font-family: $semi-bold-fonts;
+
+    border: 1px solid $white;
+    border-radius: 50%;
+    background-color: $favorites-label;
+
+    &--display-none {
+      display: none;
+    }
+  }
+
+  &__home {
+    background-image: url(../../icon/home.svg);
+  }
+
+  &__cart {
+    background-image: url(../../icon/cart.svg);
+  }
+
+  &__arrow-primary {
+    background-image: url(../../icon/arrow-primary.svg);
+
+    &--rigth {
+      transform: scaleX(-1);
+    }
+
+    &--top {
+      transform: rotate(90deg);
+    }
+
+    &--left {
+      transform: rotate(-90deg);
+    }
+  }
+
+  &__arrow-secondary {
+    background-image: url(../../icon/arrow-secondary.svg);
+
+    &--rigth {
+      transform: rotate(-90deg);
+    }
+  }
+
+  &__menu {
+    background-image: url(../../icon/menu.svg);
+  }
+
+  &__close {
+    background-image: url(../../icon/close.svg);
+  }
+
+  &__minus {
+    background-image: url(../../icon/minus.svg);
+  }
+
+  &__plus {
+    background-image: url(../../icon/plus.svg);
+  }
+
+  &__search {
+    background-image: url(../../icon/search.svg);
+  }
+}
+
+.icon-logo {
+  width: 40px;
+  height: 24px;
+
+  background-image: url(../../icon/logo.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+
+  @include hover(transform, scale(1.1));
+}
