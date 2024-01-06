@@ -8,46 +8,31 @@ import { ImageSlider } from '../../components/ImageSlider';
 import { ShopByCategory } from '../../components/ShopByCategory';
 import { getNewProducts } from '../../helpers/getFunctions/getNewProducts';
 import { Loader } from '../../components/Loader';
+import { Main } from '../../components/Main';
 
 export const HomePage: React.FC = () => {
   const [hotPriceProducts, setHotPriceProducts] = useState<Product[]>([]);
   const [newProducts, setNewProducts] = useState<Product[]>([]);
 
-  const [isLoadingHotProducts, setIsLoadingHotProducts] = useState(false);
-  const [isErrorHotProducts, setIsErrorHotProducts] = useState(false);
-
-  const [isLoadingNewProducts, setIsLoadingNewProducts] = useState(false);
-  const [isErrorNewProducts, setIsErrorNewProducts] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
 
   useEffect(() => {
-    setIsLoadingHotProducts(true);
-    setIsErrorHotProducts(false);
+    setIsLoading(true);
+    setIsError(false);
 
     getProducts()
-      .then(productsFromServer => (
-        setHotPriceProducts(getHotProducts(productsFromServer))
-      ))
-      .catch(() => setIsErrorHotProducts(true))
-      .finally(() => setIsLoadingHotProducts(false));
-  }, []);
-
-  useEffect(() => {
-    setIsLoadingNewProducts(true);
-    setIsErrorNewProducts(false);
-
-    getProducts()
-      .then(productsFromServer => (
-        setNewProducts(getNewProducts(productsFromServer))
-      ))
-      .catch(() => setIsErrorNewProducts(true))
-      .finally(() => setIsLoadingNewProducts(false));
+      .then(productsFromServer => {
+        setHotPriceProducts(getHotProducts(productsFromServer));
+        setNewProducts(getNewProducts(productsFromServer));
+      })
+      .catch(() => setIsLoading(true))
+      .finally(() => setIsError(false));
   }, []);
 
   const getSlider = (
     products: Product[],
     title: string,
-    isLoading: boolean,
-    isError: boolean,
   ) => {
     if (isLoading) {
       return <Loader />;
@@ -61,14 +46,12 @@ export const HomePage: React.FC = () => {
   };
 
   return (
-    <div className="main__home home">
+    <Main>
       <ImageSlider />
 
       {getSlider(
         hotPriceProducts,
         'Hot price',
-        isLoadingHotProducts,
-        isErrorHotProducts,
       )}
 
       <ShopByCategory />
@@ -76,9 +59,7 @@ export const HomePage: React.FC = () => {
       {getSlider(
         newProducts,
         'Brand new models',
-        isLoadingNewProducts,
-        isErrorNewProducts,
       )}
-    </div>
+    </Main>
   );
 };

@@ -13,7 +13,6 @@ import { FavoritesPage } from './pages/FavoritesPage';
 import { ProductsProvider } from './components/ProductsContext';
 import { CartPage } from './pages/CartPage';
 import { ProductDetailsPage } from './pages/ProductDetailsPage';
-import { Main } from './components/Main';
 
 const App = () => {
   const toggleMenu = () => {
@@ -32,33 +31,31 @@ const App = () => {
         <Header toggleMenu={toggleMenu} />
         <Menu toggleMenu={toggleMenu} />
 
-        <Main>
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/phones" element={<PhonesPage />} />
-            <Route path="/tablets" element={<TabletsPage />} />
-            <Route path="/accessories" element={<AccessoriesPage />} />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/phones" element={<PhonesPage />} />
+          <Route path="/tablets" element={<TabletsPage />} />
+          <Route path="/accessories" element={<AccessoriesPage />} />
 
-            <Route
-              path="/phones/:productId"
-              element={<ProductDetailsPage />}
-            />
+          <Route
+            path="/phones/:productId"
+            element={<ProductDetailsPage />}
+          />
 
-            <Route
-              path="/tablets/:productId"
-              element={<ProductDetailsPage />}
-            />
+          <Route
+            path="/tablets/:productId"
+            element={<ProductDetailsPage />}
+          />
 
-            <Route
-              path="/accessories/:productId"
-              element={<ProductDetailsPage />}
-            />
+          <Route
+            path="/accessories/:productId"
+            element={<ProductDetailsPage />}
+          />
 
-            <Route path="/favorites" element={<FavoritesPage />} />
-            <Route path="/cart" element={<CartPage />} />
-            <Route path="*" element={<NotFoundPage />} />
-          </Routes>
-        </Main>
+          <Route path="/favorites" element={<FavoritesPage />} />
+          <Route path="/cart" element={<CartPage />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
 
       </ProductsProvider>
 
